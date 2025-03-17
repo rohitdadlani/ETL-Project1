@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>ETL Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 30px;
+        }
+        h1 {
+            color: #444;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        pre {
+            background: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ccc;
+            overflow-x: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>ETL Dashboard</h1>
+
+    <div class="section">
+        {% if last_start and last_end %}
+            <p><strong>Last ETL Start:</strong> {{ last_start }}</p>
+            <p><strong>Last ETL End:</strong> {{ last_end }}</p>
+            <p><strong>Execution Time (minutes):</strong> {{ execution_time }}</p>
+        {% else %}
+            <p>No complete ETL run found in the log.</p>
+        {% endif %}
+    </div>
+
+    <div class="section">
+        <h2>Recent Log Entries</h2>
+        <pre>
+{% for line in recent_lines %}
+{{ line }}
+{% endfor %}
+        </pre>
+    </div>
+
+</body>
+</html>
